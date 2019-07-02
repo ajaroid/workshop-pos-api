@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/v1/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('v1/login', 'Api\V1\AuthController@login');
 
 Route::group([
@@ -24,5 +20,15 @@ Route::group([
     'namespace' => 'Api\V1',
     'prefix' => 'v1'
 ], function () {
+    Route::get('user', 'AuthController@user');
     Route::post('logout', 'AuthController@logout');
+    Route::apiResources([
+        'users' => 'UserController'
+    ]);
+});
+
+Route::fallback(function () {
+    return response()->json([
+        'message' => 'resource not found'
+    ], 404);
 });

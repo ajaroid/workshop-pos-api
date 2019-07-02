@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use Auth;
+use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,5 +41,10 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Unable to logout user'
         ], 401);
+    }
+
+    public function user(Request $request)
+    {
+        return Auth::user()->makeVisible(['api_token']);
     }
 }
