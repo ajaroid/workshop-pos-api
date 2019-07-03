@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\User;
+use App\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::orderBy('id', 'desc')->paginate(10);
+        return Supplier::orderBy('id', 'desc')->paginate(10);
     }
 
     /**
@@ -29,14 +28,16 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|max:100',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed'
+            'email' => 'required|email|unique:suppliers,email',
+            'phone' => 'required|max:15',
+            'address' => 'required'
         ]);
 
-        return User::create([
+        return Supplier::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'phone' => $request->phone,
+            'address' => $request->address
         ]);
     }
 
@@ -48,7 +49,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::findOrFail($id);
+        return Supplier::findOrFail($id);
     }
 
     /**
@@ -60,31 +61,39 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $supplier = Supplier::findOrFail($id);
 
         if ($request->has('name')) {
             $request->validate([
                 'name' => 'required|max:100'
             ]);
-            $user->name = $request->name;
+            $supplier->name = $request->name;
         }
 
         if ($request->has('email')) {
             $request->validate([
-                'email' => 'required|email|unique:users,email'
+                'email' => 'required|email|unique:suppliers,email'
             ]);
-            $user->email = $request->email;
+            $supplier->email = $request->email;
         }
 
-        if ($request->has('password')) {
+        if ($request->has('phone')) {
             $request->validate([
-                'password' => 'required|confirmed'
+                'phone' => 'required|max:15'
             ]);
-            $user->password = Hash::make($request->password);
+            $supplier->phone = $request->phone;
         }
-        $user->save();
 
-        return $user;
+        if ($request->has('address')) {
+            $request->validate([
+                'address' => 'required'
+            ]);
+            $supplier->address = $request->address;
+        }
+        $supplier->save();
+
+        return $supplier;
+
     }
 
     /**
@@ -95,10 +104,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        Supplier::destroy($id);
 
         return response()->json([
-            'message' => 'success delete user data'
+            'message' => 'success delete supplier data'
         ], 200);
     }
 }

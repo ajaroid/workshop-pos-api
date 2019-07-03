@@ -23,7 +23,9 @@ Route::group([
     Route::get('user', 'AuthController@user');
     Route::post('logout', 'AuthController@logout');
     Route::apiResources([
-        'users' => 'UserController'
+        'users' => 'UserController',
+        'suppliers' => 'SupplierController',
+        'categories' => 'CategoryController'
     ]);
 });
 

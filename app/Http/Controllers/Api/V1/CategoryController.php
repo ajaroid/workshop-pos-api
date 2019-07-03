@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\User;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::orderBy('id', 'desc')->paginate(10);
+        return Category::orderBy('id', 'desc')->paginate(10);
     }
 
     /**
@@ -28,15 +27,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:100',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed'
+            'name' => 'required|max:100'
         ]);
 
-        return User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+        return Category::create([
+            'name' => $request->name
         ]);
     }
 
@@ -48,7 +43,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::findOrFail($id);
+        return Category::findOrFail($id);
     }
 
     /**
@@ -60,31 +55,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $category = Category::findOrFail($id);
 
         if ($request->has('name')) {
             $request->validate([
                 'name' => 'required|max:100'
             ]);
-            $user->name = $request->name;
+            $category->name = $request->name;
         }
 
-        if ($request->has('email')) {
-            $request->validate([
-                'email' => 'required|email|unique:users,email'
-            ]);
-            $user->email = $request->email;
-        }
+        $category->save();
 
-        if ($request->has('password')) {
-            $request->validate([
-                'password' => 'required|confirmed'
-            ]);
-            $user->password = Hash::make($request->password);
-        }
-        $user->save();
-
-        return $user;
+        return $category;
     }
 
     /**
@@ -95,10 +77,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        Category::destroy($id);
 
         return response()->json([
-            'message' => 'success delete user data'
+            'message' => 'success delete category data'
         ], 200);
     }
 }
