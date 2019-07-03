@@ -15,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::orderBy('id', 'desc')->paginate(10);
+        return Product::with('category')
+                ->orderBy('id', 'desc')
+                ->paginate(10);
     }
 
     /**
@@ -62,7 +64,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return Product::findOrFail($id);
+        return Product::with('category')->findOrFail($id);
     }
 
     /**
