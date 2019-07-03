@@ -25,7 +25,8 @@ Route::group([
     Route::apiResources([
         'users' => 'UserController',
         'suppliers' => 'SupplierController',
-        'categories' => 'CategoryController'
+        'categories' => 'CategoryController',
+        'products' => 'ProductController'
     ]);
 });
 
