@@ -42,46 +42,7 @@ class TrxPurchaseController extends Controller
             'details.*.qty' => 'required|integer'
         ]);
 
-        $details = collect($request->details);
-
-        $productIds = $details->pluck('product_id')->all();
-
-        $products = Product::findOrFail($productIds);
-        $products = $products->map(function ($item, $key) use ($details) {
-
-            $item['qty'] = $details->filter(function ($d) use ($item) {
-                return $d['product_id'] == $item['id'];
-            })->values()->get(0)['qty'];
-
-            $item['subtotal'] = $item['price_purchase'] * $item['qty'];
-
-            return [
-                'product_id' => $item['id'],
-                'qty' => $item['qty'],
-                'subtotal' => $item['subtotal']
-            ];
-        })->all();
-
-        $total = collect($products)->sum('subtotal');
-
-        return DB::transaction(function () use ($request, $products, $total) {
-
-            $trx = TrxPurchase::create([
-                'supplier_id' => $request->supplier_id,
-                'user_id' => Auth::id(),
-                'total' => $total,
-            ]);
-
-            $data = collect($products)->map(function ($item, $key) use ($trx) {
-                $item['trx_purchase_id'] = $trx->id;
-                return $item;
-            })->all();
-
-            TrxPurchaseDetail::insert($data);
-
-            return $trx;
-        });
-
+        return TrxPurchase::saveTransaction($request);
     }
 
     /**
