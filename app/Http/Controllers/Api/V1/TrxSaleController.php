@@ -45,7 +45,7 @@ class TrxSaleController extends Controller
     public function show($id)
     {
         return TrxSale::with([
-            'details.product' => function ($q) {
+            'details.product.category' => function ($q) {
                 $q->orderBy('id', 'desc');
             }
         ])->findOrFail($id);

@@ -56,7 +56,7 @@ class TrxPurchaseController extends Controller
             'supplier' => function ($q) {
                 $q->select('id', 'name', 'email', 'phone', 'address');
             },
-            'details.product' => function ($q) {
+            'details.product.category' => function ($q) {
                 $q->orderBy('id', 'desc');
             }
         ])->findOrFail($id);
