@@ -12,4 +12,9 @@ class TrxSaleDetail extends Model
         'qty',
         'subtotal'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
