@@ -27,7 +27,8 @@ Route::group([
         'suppliers' => 'SupplierController',
         'categories' => 'CategoryController',
         'products' => 'ProductController',
-        'transactions/purchase' => 'TrxPurchaseController'
+        'transactions/purchases' => 'TrxPurchaseController',
+        'transactions/sales' => 'TrxSaleController'
     ]);
 });
 

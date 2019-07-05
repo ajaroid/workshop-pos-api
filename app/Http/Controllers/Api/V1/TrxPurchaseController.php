@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use Auth;
 use App\Product;
 use App\TrxPurchase;
-use App\TrxPurchaseDetail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class TrxPurchaseController extends Controller
@@ -38,6 +36,7 @@ class TrxPurchaseController extends Controller
     {
         $request->validate([
             'supplier_id' => 'required|integer',
+            'details' => 'required|array',
             'details.*.product_id' => 'required|integer',
             'details.*.qty' => 'required|integer'
         ]);
@@ -72,7 +71,7 @@ class TrxPurchaseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //nothing
     }
 
     /**
@@ -83,6 +82,6 @@ class TrxPurchaseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //nothing
     }
 }

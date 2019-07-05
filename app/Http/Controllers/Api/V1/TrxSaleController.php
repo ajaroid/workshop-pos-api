@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\TrxSale;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,7 @@ class TrxSaleController extends Controller
      */
     public function index()
     {
-        //
+        return TrxSale::orderBy('id', 'desc')->paginate(10);
     }
 
     /**
@@ -25,7 +26,14 @@ class TrxSaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'pay' => 'required|integer',
+            'details' => 'required|array',
+            'details.*.product_id' => 'required|integer',
+            'details.*.qty' => 'required|integer'
+        ]);
+
+        return TrxSale::saveTransaction($request);
     }
 
     /**
@@ -36,7 +44,11 @@ class TrxSaleController extends Controller
      */
     public function show($id)
     {
-        //
+        return TrxSale::with([
+            'details' => function ($q) {
+                $q->orderBy('id', 'desc');
+            }
+        ])->findOrFail($id);
     }
 
     /**
@@ -48,7 +60,7 @@ class TrxSaleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //nothing
     }
 
     /**
@@ -59,6 +71,6 @@ class TrxSaleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //nothing
     }
 }
