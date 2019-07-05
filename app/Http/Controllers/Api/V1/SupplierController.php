@@ -72,7 +72,7 @@ class SupplierController extends Controller
 
         if ($request->has('email')) {
             $request->validate([
-                'email' => 'required|email|unique:suppliers,email'
+                'email' => 'required|email|unique:suppliers,email,' . $supplier->id
             ]);
             $supplier->email = $request->email;
         }
