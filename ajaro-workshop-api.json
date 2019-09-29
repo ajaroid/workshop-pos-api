@@ -1,0 +1,3714 @@
+{
+	"info": {
+		"_postman_id": "3d47b59f-f453-4394-88cc-17f09ec6386a",
+		"name": "ajaro-workshop-api",
+		"description": "## Ajaro - Talent Scout Workshop\n\n### PoS API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"jarjit@mail.com\",\n\t\"password\": 123456\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login-failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"jarjit@mail.com\",\n\t\"password\": 123455\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 17:30:12 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 17:30:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"email or password incorrect\"\n}"
+						},
+						{
+							"name": "/login-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"jarjit@mail.com\",\n\t\"password\": 123456\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 17:34:40 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 17:34:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"jarjit\",\n    \"email\": \"jarjit@mail.com\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2019-07-02 17:03:26\",\n    \"updated_at\": \"2019-07-02 17:34:40\",\n    \"api_token\": \"KfSFYUtnj1cmKiARdRxOOoi498BvO8zS3owjm9YKf5tXa2649RMbplPlBxpl\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/logout",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/logout",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 17:44:32 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 17:44:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"See you next time\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/user",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/user",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:19:37 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:19:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"jarjit\",\n    \"email\": \"jarjit@mail.com\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2019-07-02 17:03:26\",\n    \"updated_at\": \"2019-07-02 17:52:29\",\n    \"api_token\": \"MGn8Jnni69h6yLOq7UbPqwZEsGbXMVE6KJctdjMZq9eFUBzW84k8aQHFfPdA\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "/users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/users",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/users",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:53:31 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:53:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 4,\n            \"name\": \"ubin edited tiga\",\n            \"email\": \"upin@mail.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2019-07-02 18:28:20\",\n            \"updated_at\": \"2019-07-02 18:43:55\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"ipin\",\n            \"email\": \"ipin@mail.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2019-07-02 18:04:56\",\n            \"updated_at\": \"2019-07-02 18:04:56\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"jarjit\",\n            \"email\": \"jarjit@mail.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2019-07-02 17:03:26\",\n            \"updated_at\": \"2019-07-02 17:52:29\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/v1/users?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/v1/users?page=1\",\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/v1/users\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 3,\n    \"total\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "/users/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/users/{{USER__ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{USER__ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/users/{id}",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/users/{{USER__ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"{{USER__ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:30:04 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:30:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"jarjit\",\n    \"email\": \"jarjit@mail.com\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2019-07-02 17:03:26\",\n    \"updated_at\": \"2019-07-02 17:52:29\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"upin\",\n\t\"email\": \"upin@mail.com\",\n\t\"password\": 123456,\n\t\"password_confirmation\": 123456\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/users",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/users-failed-validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/users",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:26:59 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:26:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ],\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "/users-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"upin\",\n\t\"email\": \"upin@mail.com\",\n\t\"password\": 123456,\n\t\"password_confirmation\": 123456\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/users",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:28:20 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:28:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"upin\",\n    \"email\": \"upin@mail.com\",\n    \"updated_at\": \"2019-07-02 18:28:20\",\n    \"created_at\": \"2019-07-02 18:28:20\",\n    \"id\": 4\n}"
+						}
+					]
+				},
+				{
+					"name": "/users/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"ubin edited tiga\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/users/{{USER__ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{USER__ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/users/{id}",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"ubin edited tiga\"\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/users/{{USER__ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"{{USER__ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:43:55 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:43:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"ubin edited tiga\",\n    \"email\": \"upin@mail.com\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2019-07-02 18:28:20\",\n    \"updated_at\": \"2019-07-02 18:43:55\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/users/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/users/{{USER__ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{USER__ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/users/{id}",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/users/8",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:49:00 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:49:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"success delete user data\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "suppliers",
+			"item": [
+				{
+					"name": "/suppliers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/suppliers",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"suppliers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/suppliers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/suppliers",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"suppliers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:53:58 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:53:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 3,\n            \"name\": \"toko mariono sejahtera sentosa\",\n            \"email\": \"mariono@mail.com\",\n            \"phone\": \"086810980098\",\n            \"address\": \"jalan kampung rambutan\",\n            \"created_at\": \"2019-07-03 02:18:53\",\n            \"updated_at\": \"2019-07-03 02:25:03\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"atuk dalang\",\n            \"email\": \"atuk@mail.com\",\n            \"phone\": \"08681234567\",\n            \"address\": \"kampung durian runtuh\",\n            \"created_at\": \"2019-07-02 18:59:16\",\n            \"updated_at\": \"2019-07-02 18:59:16\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/v1/suppliers?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/v1/suppliers?page=1\",\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/v1/suppliers\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "/suppliers/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/suppliers/{{SUPPLIER_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								"{{SUPPLIER_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/suppliers/{id}",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/suppliers/{{SUPPLIER_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"suppliers",
+										"{{SUPPLIER_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 19:00:49 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 19:00:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"atuk dalang\",\n    \"email\": \"atuk@mail.com\",\n    \"phone\": \"08681234567\",\n    \"address\": \"kampung durian runtuh\",\n    \"created_at\": \"2019-07-02 18:59:16\",\n    \"updated_at\": \"2019-07-02 18:59:16\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/suppliers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"toko mariono sentosa\",\n\t\"email\": \"mariono@mail.com\",\n\t\"phone\": \"086810980098\",\n\t\"address\": \"jalan kampung rambutan\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/suppliers",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"suppliers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/suppliers-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"toko mariono sentosa\",\n\t\"email\": \"mariono@mail.com\",\n\t\"phone\": \"086810980098\",\n\t\"address\": \"jalan kampung rambutan\"\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/suppliers",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"suppliers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:18:53 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:18:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"toko mariono sentosa\",\n    \"email\": \"mariono@mail.com\",\n    \"phone\": \"086810980098\",\n    \"address\": \"jalan kampung rambutan\",\n    \"updated_at\": \"2019-07-03 02:18:53\",\n    \"created_at\": \"2019-07-03 02:18:53\",\n    \"id\": 3\n}"
+						},
+						{
+							"name": "/suppliers-failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/suppliers",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"suppliers"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:17:10 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:17:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ],\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"phone\": [\n            \"The phone field is required.\"\n        ],\n        \"address\": [\n            \"The address field is required.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/suppliers/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"toko mariono sejahtera sentosa\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/suppliers/{{SUPPLIER_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								"{{SUPPLIER_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/suppliers/{id}",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"toko mariono sejahtera sentosa\"\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/suppliers/{{SUPPLIER_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"suppliers",
+										"{{SUPPLIER_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:25:03 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:25:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"name\": \"toko mariono sejahtera sentosa\",\n    \"email\": \"mariono@mail.com\",\n    \"phone\": \"086810980098\",\n    \"address\": \"jalan kampung rambutan\",\n    \"created_at\": \"2019-07-03 02:18:53\",\n    \"updated_at\": \"2019-07-03 02:25:03\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/suppliers/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/suppliers/{{SUPPLIER_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"suppliers",
+								"{{SUPPLIER_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/suppliers/{id}",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/suppliers/{{SUPPLIER_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"suppliers",
+										"{{SUPPLIER_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Jul 2019 07:24:37 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Jul 2019 07:24:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"success delete supplier data\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "/categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/categories",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categories",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:40:31 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:40:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"parfum\",\n            \"created_at\": \"2019-07-03 02:35:24\",\n            \"updated_at\": \"2019-07-03 02:35:24\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"shampoo\",\n            \"created_at\": \"2019-07-03 02:35:48\",\n            \"updated_at\": \"2019-07-03 02:35:48\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/v1/categories?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/v1/categories?page=1\",\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/v1/categories\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "/categories/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/categories/{{CATEGORY_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"{{CATEGORY_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/categories/{id}",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categories/{{CATEGORY_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"{{CATEGORY_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:45:20 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:45:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"shampoo\",\n    \"created_at\": \"2019-07-03 02:35:48\",\n    \"updated_at\": \"2019-07-03 02:35:48\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/categories",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"bibit parfum laundry\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/categories",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/categories",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"bibit parfum laundry\"\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categories",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:47:38 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:47:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"bibit parfum laundry\",\n    \"updated_at\": \"2019-07-03 02:47:38\",\n    \"created_at\": \"2019-07-03 02:47:38\",\n    \"id\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "/categories/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"shampoo edited\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/categories/{{CATEGORY_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"{{CATEGORY_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/categories/{id}",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"shampoo edited\"\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categories/{{CATEGORY_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"{{CATEGORY_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:50:57 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:50:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"shampoo edited\",\n    \"created_at\": \"2019-07-03 02:35:48\",\n    \"updated_at\": \"2019-07-03 02:50:57\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/categories/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/categories/{{CATEGORY_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"{{CATEGORY_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/categories/{id}",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categories/{{CATEGORY_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"{{CATEGORY_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:56:07 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 02:56:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"success delete category data\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "/products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/products",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 08:50:11 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 08:50:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "51"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 6,\n            \"name\": \"pewangi pakaian anak\",\n            \"desc\": \"lorem ipsum dolor sit amet\",\n            \"category_id\": 2,\n            \"price_purchase\": 50000,\n            \"price_sale\": 55000,\n            \"stock\": 100,\n            \"created_at\": \"2019-07-03 04:29:20\",\n            \"updated_at\": \"2019-07-03 04:29:20\",\n            \"category\": {\n                \"id\": 2,\n                \"name\": \"shampoo edited\",\n                \"created_at\": \"2019-07-03 02:35:48\",\n                \"updated_at\": \"2019-07-03 02:50:57\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"name\": \"shampoo mobil sedan edited\",\n            \"desc\": \"this is an optional value\",\n            \"category_id\": 2,\n            \"price_purchase\": 40000,\n            \"price_sale\": 45000,\n            \"stock\": 0,\n            \"created_at\": \"2019-07-03 04:20:25\",\n            \"updated_at\": \"2019-07-03 04:28:44\",\n            \"category\": {\n                \"id\": 2,\n                \"name\": \"shampoo edited\",\n                \"created_at\": \"2019-07-03 02:35:48\",\n                \"updated_at\": \"2019-07-03 02:50:57\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"name\": \"pewangi pakaian anak\",\n            \"desc\": \"lorem ipsum dolor sit amet\",\n            \"category_id\": 2,\n            \"price_purchase\": 50000,\n            \"price_sale\": 55000,\n            \"stock\": 100,\n            \"created_at\": \"2019-07-03 03:57:36\",\n            \"updated_at\": \"2019-07-03 03:57:36\",\n            \"category\": {\n                \"id\": 2,\n                \"name\": \"shampoo edited\",\n                \"created_at\": \"2019-07-03 02:35:48\",\n                \"updated_at\": \"2019-07-03 02:50:57\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"name\": \"pewangi pakaian anak\",\n            \"desc\": \"lorem ipsum dolor sit amet\",\n            \"category_id\": 2,\n            \"price_purchase\": 50000,\n            \"price_sale\": 55000,\n            \"stock\": 100,\n            \"created_at\": \"2019-07-03 03:57:36\",\n            \"updated_at\": \"2019-07-03 03:57:36\",\n            \"category\": {\n                \"id\": 2,\n                \"name\": \"shampoo edited\",\n                \"created_at\": \"2019-07-03 02:35:48\",\n                \"updated_at\": \"2019-07-03 02:50:57\"\n            }\n        },\n        {\n            \"id\": 1,\n            \"name\": \"pewangi pakaian anak\",\n            \"desc\": \"lorem ipsum dolor sit amet\",\n            \"category_id\": 2,\n            \"price_purchase\": 50000,\n            \"price_sale\": 55000,\n            \"stock\": 100,\n            \"created_at\": \"2019-07-03 03:57:27\",\n            \"updated_at\": \"2019-07-03 03:57:27\",\n            \"category\": {\n                \"id\": 2,\n                \"name\": \"shampoo edited\",\n                \"created_at\": \"2019-07-03 02:35:48\",\n                \"updated_at\": \"2019-07-03 02:50:57\"\n            }\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/v1/products?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/v1/products?page=1\",\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/v1/products\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 5,\n    \"total\": 5\n}"
+						}
+					]
+				},
+				{
+					"name": "/products/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/products/{{PRODUCT_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"{{PRODUCT_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/products/{id}",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/products/{{PRODUCT_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"{{PRODUCT_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 08:52:01 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 08:52:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"name\": \"pewangi pakaian anak\",\n    \"desc\": \"lorem ipsum dolor sit amet\",\n    \"category_id\": 2,\n    \"price_purchase\": 50000,\n    \"price_sale\": 55000,\n    \"stock\": 100,\n    \"created_at\": \"2019-07-03 04:29:20\",\n    \"updated_at\": \"2019-07-03 04:29:20\",\n    \"category\": {\n        \"id\": 2,\n        \"name\": \"shampoo edited\",\n        \"created_at\": \"2019-07-03 02:35:48\",\n        \"updated_at\": \"2019-07-03 02:50:57\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"shampoo mobil sedan\",\n    \"desc\": \"this is an optional value\",\n    \"category_id\": 2,\n    \"price_purchase\": 40000,\n    \"price_sale\": 45000\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/products-failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"shampoo mobil sedan\"\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/products",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 04:12:44 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 04:12:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"category_id\": [\n            \"The category id field is required.\"\n        ],\n        \"price_purchase\": [\n            \"The price purchase field is required.\"\n        ],\n        \"price_sale\": [\n            \"The price sale field is required.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "/products",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"shampoo mobil sedan\",\n    \"desc\": \"this is an optional value\",\n    \"category_id\": 2,\n    \"price_purchase\": 40000,\n    \"price_sale\": 45000\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/products",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 04:20:25 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 04:20:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"shampoo mobil sedan\",\n    \"desc\": \"this is an optional value\",\n    \"category_id\": 2,\n    \"price_purchase\": 40000,\n    \"price_sale\": 45000,\n    \"updated_at\": \"2019-07-03 04:20:25\",\n    \"created_at\": \"2019-07-03 04:20:25\",\n    \"id\": 5\n}"
+						}
+					]
+				},
+				{
+					"name": "/products/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"shampoo mobil sedan edited\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/products/{{PRODUCT_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"{{PRODUCT_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/products/{id}",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"shampoo mobil sedan edited\"\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/products/{{PRODUCT_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"{{PRODUCT_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 04:28:44 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 04:28:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"name\": \"shampoo mobil sedan edited\",\n    \"desc\": \"this is an optional value\",\n    \"category_id\": 2,\n    \"price_purchase\": 40000,\n    \"price_sale\": 45000,\n    \"stock\": 0,\n    \"created_at\": \"2019-07-03 04:20:25\",\n    \"updated_at\": \"2019-07-03 04:28:44\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/products/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/products/{{PRODUCT_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"{{PRODUCT_ID}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/products/{id}",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/products/{{PRODUCT_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"{{PRODUCT_ID}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 04:29:48 +0000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 04:29:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.1.23"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"success delete product data\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "sales",
+					"item": [
+						{
+							"name": "/transactions/sales",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/transactions/sales",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"sales"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/transactions/sales",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/api/v1/transactions/sales",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"transactions",
+												"sales"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:37:36 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:37:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 6,\n            \"user_id\": 2,\n            \"total\": 155000,\n            \"pay\": 460000,\n            \"change\": 305000,\n            \"created_at\": \"2019-07-05 16:26:27\",\n            \"updated_at\": \"2019-07-05 16:26:27\"\n        },\n        {\n            \"id\": 5,\n            \"user_id\": 2,\n            \"total\": 290000,\n            \"pay\": 460000,\n            \"change\": 170000,\n            \"created_at\": \"2019-07-05 16:19:23\",\n            \"updated_at\": \"2019-07-05 16:19:23\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/v1/transactions/sales?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/v1/transactions/sales?page=1\",\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/v1/transactions/sales\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+								}
+							]
+						},
+						{
+							"name": "/transactions/sales/{id}",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/transactions/sales/{{SALES_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"sales",
+										"{{SALES_ID}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/transactions/sales/{id}",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/api/v1/transactions/sales/{{SALES_ID}}",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"transactions",
+												"sales",
+												"{{SALES_ID}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:46:09 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:46:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 5,\n    \"user_id\": 2,\n    \"total\": 290000,\n    \"pay\": 460000,\n    \"change\": 170000,\n    \"created_at\": \"2019-07-05 16:19:23\",\n    \"updated_at\": \"2019-07-05 16:19:23\",\n    \"details\": [\n        {\n            \"id\": 1,\n            \"trx_sale_id\": 5,\n            \"product_id\": 5,\n            \"qty\": 4,\n            \"subtotal\": 180000,\n            \"created_at\": null,\n            \"updated_at\": null,\n            \"product\": {\n                \"id\": 5,\n                \"name\": \"shampoo mobil sedan edited\",\n                \"desc\": \"this is an optional value\",\n                \"category_id\": 2,\n                \"price_purchase\": 40000,\n                \"price_sale\": 45000,\n                \"stock\": 2,\n                \"created_at\": \"2019-07-03 04:20:25\",\n                \"updated_at\": \"2019-07-05 16:26:27\",\n                \"category\": {\n                    \"id\": 2,\n                    \"name\": \"shampoo edited\",\n                    \"created_at\": \"2019-07-03 02:35:48\",\n                    \"updated_at\": \"2019-07-03 02:50:57\"\n                }\n            }\n        },\n        {\n            \"id\": 2,\n            \"trx_sale_id\": 5,\n            \"product_id\": 6,\n            \"qty\": 2,\n            \"subtotal\": 110000,\n            \"created_at\": null,\n            \"updated_at\": null,\n            \"product\": {\n                \"id\": 6,\n                \"name\": \"pewangi pakaian anak\",\n                \"desc\": \"lorem ipsum dolor sit amet\",\n                \"category_id\": 2,\n                \"price_purchase\": 50000,\n                \"price_sale\": 55000,\n                \"stock\": 106,\n                \"created_at\": \"2019-07-03 04:29:20\",\n                \"updated_at\": \"2019-07-05 16:26:27\",\n                \"category\": {\n                    \"id\": 2,\n                    \"name\": \"shampoo edited\",\n                    \"created_at\": \"2019-07-03 02:35:48\",\n                    \"updated_at\": \"2019-07-03 02:50:57\"\n                }\n            }\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "/transactions/sales",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"pay\": 460000,\n\t\"details\": [\n\t\t{\n            \"product_id\": 6,\n            \"qty\": 2\n        },\n        {\n        \t\"product_id\": 5,\n        \t\"qty\": 1\n        }\n\t]\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/transactions/sales",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"sales"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/transactions/sales",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"pay\": 460000,\n\t\"details\": [\n\t\t{\n            \"product_id\": 6,\n            \"qty\": 2\n        },\n        {\n        \t\"product_id\": 5,\n        \t\"qty\": 4\n        }\n\t]\n}"
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/api/v1/transactions/sales",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"transactions",
+												"sales"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:19:23 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:19:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user_id\": 2,\n    \"total\": 290000,\n    \"pay\": 460000,\n    \"change\": 170000,\n    \"updated_at\": \"2019-07-05 16:19:23\",\n    \"created_at\": \"2019-07-05 16:19:23\",\n    \"id\": 5\n}"
+								},
+								{
+									"name": "/transactions/sales",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"pay\": 460000,\n\t\"details\": [\n\t\t{\n            \"product_id\": 6,\n            \"qty\": 2\n        },\n        {\n        \t\"product_id\": 5,\n        \t\"qty\": 1\n        }\n\t]\n}"
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/api/v1/transactions/sales",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"transactions",
+												"sales"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:26:27 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:26:27 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user_id\": 2,\n    \"total\": 155000,\n    \"pay\": 460000,\n    \"change\": 305000,\n    \"updated_at\": \"2019-07-05 16:26:27\",\n    \"created_at\": \"2019-07-05 16:26:27\",\n    \"id\": 6\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4da2d72c-d5fa-4016-9c0a-e4cbc0c8d81b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfb1d884-a670-44b5-a0bf-148e5ece4e16",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "purchases",
+					"item": [
+						{
+							"name": "/transactions/purchases",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{TOKEN}}"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/transactions/purchases",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"purchases"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/transactions/purchase",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/api/v1/transactions/purchase",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"transactions",
+												"purchase"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Jul 2019 16:21:28 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Jul 2019 16:21:28 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 4,\n            \"supplier_id\": 1,\n            \"user_id\": 2,\n            \"total\": 250000,\n            \"created_at\": \"2019-07-03 09:16:03\",\n            \"updated_at\": \"2019-07-03 09:16:03\",\n            \"supplier\": {\n                \"id\": 1,\n                \"name\": \"atuk dalang\",\n                \"email\": \"atuk@mail.com\",\n                \"phone\": \"08681234567\",\n                \"address\": \"kampung durian runtuh\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"supplier_id\": 1,\n            \"user_id\": 2,\n            \"total\": 100000,\n            \"created_at\": \"2019-07-03 09:15:56\",\n            \"updated_at\": \"2019-07-03 09:15:56\",\n            \"supplier\": {\n                \"id\": 1,\n                \"name\": \"atuk dalang\",\n                \"email\": \"atuk@mail.com\",\n                \"phone\": \"08681234567\",\n                \"address\": \"kampung durian runtuh\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"supplier_id\": 1,\n            \"user_id\": 2,\n            \"total\": 200000,\n            \"created_at\": \"2019-07-03 09:15:46\",\n            \"updated_at\": \"2019-07-03 09:15:46\",\n            \"supplier\": {\n                \"id\": 1,\n                \"name\": \"atuk dalang\",\n                \"email\": \"atuk@mail.com\",\n                \"phone\": \"08681234567\",\n                \"address\": \"kampung durian runtuh\"\n            }\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/v1/transactions/purchase?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/v1/transactions/purchase?page=1\",\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/v1/transactions/purchase\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 3,\n    \"total\": 3\n}"
+								}
+							]
+						},
+						{
+							"name": "/transactions/purchase/{id}",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{TOKEN}}"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/transactions/purchases/{{PURCHASES_ID}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"purchases",
+										"{{PURCHASES_ID}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/transactions/purchase/{id}",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer {{TOKEN}}"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/api/v1/transactions/purchases/{{PURCHASES_ID}}",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"transactions",
+												"purchases",
+												"{{PURCHASES_ID}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:45:29 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 05 Jul 2019 16:45:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 4,\n    \"supplier_id\": 1,\n    \"user_id\": 2,\n    \"total\": 250000,\n    \"created_at\": \"2019-07-03 09:16:03\",\n    \"updated_at\": \"2019-07-03 09:16:03\",\n    \"supplier\": {\n        \"id\": 1,\n        \"name\": \"atuk dalang\",\n        \"email\": \"atuk@mail.com\",\n        \"phone\": \"08681234567\",\n        \"address\": \"kampung durian runtuh\"\n    },\n    \"details\": [\n        {\n            \"id\": 1,\n            \"trx_purchase_id\": 4,\n            \"product_id\": 3,\n            \"qty\": 1,\n            \"subtotal\": 50000,\n            \"created_at\": \"2019-07-04 16:28:56\",\n            \"updated_at\": \"2019-07-04 16:28:56\",\n            \"product\": {\n                \"id\": 3,\n                \"name\": \"pewangi pakaian anak\",\n                \"desc\": \"lorem ipsum dolor sit amet\",\n                \"category_id\": 2,\n                \"price_purchase\": 50000,\n                \"price_sale\": 55000,\n                \"stock\": 109,\n                \"created_at\": \"2019-07-03 03:57:36\",\n                \"updated_at\": \"2019-07-05 15:07:32\",\n                \"category\": {\n                    \"id\": 2,\n                    \"name\": \"shampoo edited\",\n                    \"created_at\": \"2019-07-03 02:35:48\",\n                    \"updated_at\": \"2019-07-03 02:50:57\"\n                }\n            }\n        },\n        {\n            \"id\": 3,\n            \"trx_purchase_id\": 4,\n            \"product_id\": 6,\n            \"qty\": 2,\n            \"subtotal\": 100000,\n            \"created_at\": \"2019-07-04 16:33:41\",\n            \"updated_at\": \"2019-07-04 16:33:41\",\n            \"product\": {\n                \"id\": 6,\n                \"name\": \"pewangi pakaian anak\",\n                \"desc\": \"lorem ipsum dolor sit amet\",\n                \"category_id\": 2,\n                \"price_purchase\": 50000,\n                \"price_sale\": 55000,\n                \"stock\": 106,\n                \"created_at\": \"2019-07-03 04:29:20\",\n                \"updated_at\": \"2019-07-05 16:26:27\",\n                \"category\": {\n                    \"id\": 2,\n                    \"name\": \"shampoo edited\",\n                    \"created_at\": \"2019-07-03 02:35:48\",\n                    \"updated_at\": \"2019-07-03 02:50:57\"\n                }\n            }\n        },\n        {\n            \"id\": 2,\n            \"trx_purchase_id\": 4,\n            \"product_id\": 2,\n            \"qty\": 2,\n            \"subtotal\": 100000,\n            \"created_at\": \"2019-07-04 16:29:32\",\n            \"updated_at\": \"2019-07-04 16:29:32\",\n            \"product\": {\n                \"id\": 2,\n                \"name\": \"pewangi pakaian anak\",\n                \"desc\": \"lorem ipsum dolor sit amet\",\n                \"category_id\": 2,\n                \"price_purchase\": 50000,\n                \"price_sale\": 55000,\n                \"stock\": 100,\n                \"created_at\": \"2019-07-03 03:57:36\",\n                \"updated_at\": \"2019-07-03 03:57:36\",\n                \"category\": {\n                    \"id\": 2,\n                    \"name\": \"shampoo edited\",\n                    \"created_at\": \"2019-07-03 02:35:48\",\n                    \"updated_at\": \"2019-07-03 02:50:57\"\n                }\n            }\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "/transactions/purchase",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"supplier_id\": 3,\n    \"details\": [\n        {\n            \"product_id\": 6,\n            \"qty\": 1\n        },\n        {\n        \t\"product_id\": 5,\n        \t\"qty\": 1\n        },\n        {\n        \t\"product_id\": 3,\n        \t\"qty\": 1\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/transactions/purchases",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"purchases"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/transactions/purchase",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{TOKEN}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"supplier_id\": 3,\n    \"details\": [\n        {\n            \"product_id\": 6,\n            \"qty\": 4\n        },\n        {\n        \t\"product_id\": 5,\n        \t\"qty\": 2\n        },\n        {\n        \t\"product_id\": 3,\n        \t\"qty\": 3\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/api/v1/transactions/purchase",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"transactions",
+												"purchase"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Jul 2019 18:43:44 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Jul 2019 18:43:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"supplier_id\": 3,\n    \"user_id\": 2,\n    \"total\": 430000,\n    \"updated_at\": \"2019-07-04 18:43:44\",\n    \"created_at\": \"2019-07-04 18:43:44\",\n    \"id\": 6\n}"
+								}
+							]
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
